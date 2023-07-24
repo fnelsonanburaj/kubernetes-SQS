@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: iam-user-secret
+  namespace: keda
+data:
+  AWS_ACCESS_KEY_ID: AKIAXIJ5STGOWTNN7E4N
+  AWS_SECRET_ACCESS_KEY: 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

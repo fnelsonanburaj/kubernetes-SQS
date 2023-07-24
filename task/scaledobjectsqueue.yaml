@@ -1,0 +1,20 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: aws-sqs-queue-scaledobject
+  namespace: keda
+spec:
+  scaleTargetRef:
+    name: my-nginx
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+  - type: aws-sqs-queue
+    authenticationRef:
+      name: keda-trigger-auth-aws-credentials
+    metadata:
+      queueURL: https://sqs.us-east-1.amazonaws.com/498882222493/my-sqs-keda
+      queueLength: "5"
+      awsRegion: "us-east-1"
+      identityOwner: pod | operator 
+
